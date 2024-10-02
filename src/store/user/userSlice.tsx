@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IUser {
+interface IUserState {
 	displayName: string;
 	email: string;
 	photoURL: string;
 }
 
-const initialState: IUser = {
+const initialState: IUserState = {
 	displayName: "MeowCopter",
 	email: "admin@example.com",
 	photoURL: "",

@@ -7,7 +7,7 @@ interface IAuthTitle {
 
 const AuthTitle = ({ children, className = "" }: IAuthTitle) => {
 	return (
-		<h1 className={`text-[34px] text-center text-primary ${className}`}>
+		<h1 className={`text-[36px] font-medium text-center text-primary ${className}`}>
 			{children}
 		</h1>
 	);
