@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IGlobalState {
-	theme: "default" | "light" | "dark";
+	theme: "system" | "light" | "dark";
 }
 
 const initialState: IGlobalState = {
-	theme: "default",
+	theme: "system",
 };
 
 const globalSlice = createSlice({

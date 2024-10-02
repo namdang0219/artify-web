@@ -11,7 +11,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		switch (theme) {
-			case "default":
+			case "system":
 				if (isDarkMode) {
 					document.documentElement.setAttribute("class", "dark");
 				} else {
@@ -33,7 +33,7 @@ const HomePage = () => {
 		<div className="flex items-center gap-4 p-10">
 			<button
 				className="p-4 text-white rounded hover:bg-primaryHover bg-primary"
-				onClick={() => dispatch(setTheme("default"))}
+				onClick={() => dispatch(setTheme("system"))}
 			>
 				default
 			</button>
