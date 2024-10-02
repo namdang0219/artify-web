@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
 
@@ -17,7 +17,13 @@ root.render(
 		<BrowserRouter>
 			<Provider store={store}>
 				<App />
-				<ToastContainer />
+				<ToastContainer
+					position="top-center"
+					transition={Slide}
+					autoClose={2500}
+					pauseOnHover={false}
+					hideProgressBar={true}
+				/>
 			</Provider>
 		</BrowserRouter>
 	</React.StrictMode>

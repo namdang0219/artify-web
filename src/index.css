@@ -6,6 +6,6 @@
 
 @layer base {
 	body {
-		@apply bg-white font-NotoSans;
+		@apply text-black bg-white font-NotoSans dark:bg-slate-900 dark:text-white;
 	}
 }

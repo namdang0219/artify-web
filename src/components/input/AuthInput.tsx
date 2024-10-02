@@ -20,7 +20,7 @@ const AuthInput = ({
 
 	return (
 		<div className="relative">
-			<div className="bg-white px-2.5 absolute left-3.5 -translate-y-1/2">
+			<div className="bg-white px-2.5 absolute left-3.5 -translate-y-1/2 rounded-md">
 				<label htmlFor={name} className="text-xl text-primary">
 					{label}
 				</label>
