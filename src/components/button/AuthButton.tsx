@@ -14,7 +14,7 @@ const AuthButton = ({
 	return (
 		<button
 			type={type}
-			className={`w-full transition-all hover:bg-primaryHover h-[70px] bg-primary rounded-border10 flex items-center justify-center text-white text-xl font-medium ${className}`}
+			className={`w-full transition-all hover:bg-primaryHover h-[64px] bg-primary rounded-border10 flex items-center justify-center text-white text-xl font-medium ${className}`}
 		>
 			{children}
 		</button>

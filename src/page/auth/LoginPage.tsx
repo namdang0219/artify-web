@@ -9,6 +9,7 @@ import { IconFacebook, IconGoogle } from "components/icon/auth";
 import { IAuth } from "./SignupPage";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { useDocumentTitle } from "usehooks-ts";
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().email("Invalid email").required("Email is required"),
@@ -19,6 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginPage = () => {
+	useDocumentTitle('Artify | Login');
 	const navigate = useNavigate();
 	const {
 		handleSubmit,
@@ -39,40 +41,38 @@ const LoginPage = () => {
 
 	return (
 		<AuthLayout>
-			<form
-				onSubmit={handleSubmit(handleLogin)}
-				className="px-[100px] py-[80px] flex flex-col justify-between flex-1"
-			>
-				{/* Top Section  */}
-				<div>
-					<AuthTitle>ログイン</AuthTitle>
-					<div className="mt-[75px] space-y-9">
-						<AuthInput
-							label="Email"
-							name="email"
-							error={errors.email?.message}
-							register={register}
-						/>
-						<AuthInput
-							label="Password"
-							name="password"
-							type="password"
-							error={errors.password?.message}
-							register={register}
-						/>
+			<div className="flex flex-col justify-between flex-1 px-10">
+				<form onSubmit={handleSubmit(handleLogin)}>
+					{/* Top Section  */}
+					<div>
+						<AuthTitle>ログイン</AuthTitle>
+						<div className="mt-[75px] space-y-9">
+							<AuthInput
+								label="Email"
+								name="email"
+								error={errors.email?.message}
+								register={register}
+							/>
+							<AuthInput
+								label="Password"
+								name="password"
+								type="password"
+								error={errors.password?.message}
+								register={register}
+							/>
+						</div>
+						<AuthButton className="mt-10">Login</AuthButton>
+						<div className="mt-6 text-center">
+							Haven't an account?{" "}
+							<span
+								className="font-semibold cursor-pointer text-primary hover:underline"
+								onClick={() => navigate("/signup")}
+							>
+								Sign Up
+							</span>
+						</div>
 					</div>
-					<AuthButton className="mt-10">Login</AuthButton>
-					<div className="mt-6 text-center">
-						Haven't an account?{" "}
-						<span
-							className="font-semibold cursor-pointer text-primary hover:underline"
-							onClick={() => navigate("/signup")}
-						>
-							Sign Up
-						</span>
-					</div>
-				</div>
-
+				</form>
 				{/* Bottom Section  */}
 				<div className="flex gap-10 h-[70px] text-black text-xl">
 					<div className="flex items-center justify-center flex-1 gap-3 transition-all border cursor-pointer border-primary hover:text-white rounded-border10 hover:bg-primary">
@@ -84,7 +84,7 @@ const LoginPage = () => {
 						<span>Facebook</span>
 					</div>
 				</div>
-			</form>
+			</div>
 		</AuthLayout>
 	);
 };

@@ -8,7 +8,9 @@ interface IAuthLayout {
 const AuthLayout = ({ children, className }: IAuthLayout) => {
 	return (
 		<div className="flex w-screen h-screen select-none">
-			<div className={`w-full max-w-[720px] flex ${className}`}>
+			<div
+				className={`w-full max-w-[720px] px-[100px] py-[80px]  flex ${className}`}
+			>
 				{children}
 			</div>
 			<div className="flex-1">

@@ -21,7 +21,7 @@ const AuthInput = ({
 	return (
 		<div className="relative">
 			<div className="bg-white px-2.5 absolute left-3.5 -translate-y-1/2 rounded-md">
-				<label htmlFor={name} className="text-xl text-primary">
+				<label htmlFor={name} className="text-lg text-primary">
 					{label}
 				</label>
 			</div>
@@ -37,7 +37,7 @@ const AuthInput = ({
 				autoCapitalize="off"
 				autoCorrect="off"
 				autoComplete="off"
-				className="w-full h-[65px] outline-none border border-primary rounded-border10 text-lg px-5"
+				className="w-full h-[60px] outline-none border border-primary rounded-border10 text-lg px-5"
 				{...register(name)}
 			/>
 			<span className="absolute text-sm text-error right-4 -bottom-6">
