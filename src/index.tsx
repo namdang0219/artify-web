@@ -8,6 +8,7 @@ import { store } from "./store/store";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
+import { ModalProvider } from "context/modal-context";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
@@ -15,16 +16,18 @@ const root = ReactDOM.createRoot(
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Provider store={store}>
-				<App />
-				<ToastContainer
-					position="top-center"
-					transition={Slide}
-					autoClose={2500}
-					pauseOnHover={false}
-					hideProgressBar={true}
-				/>
-			</Provider>
+			<ModalProvider>
+				<Provider store={store}>
+					<App />
+					<ToastContainer
+						position="top-center"
+						transition={Slide}
+						autoClose={2500}
+						pauseOnHover={false}
+						hideProgressBar={true}
+					/>
+				</Provider>
+			</ModalProvider>
 		</BrowserRouter>
 	</React.StrictMode>
 );
