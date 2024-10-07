@@ -1,21 +1,21 @@
 import { Metadata } from "next";
 import React, { ReactNode } from "react";
-import '../globals.css';
+import "../globals.css";
+import AuthLayout from "@/layout/AuthLayout";
 
 export const metadata: Metadata = {
 	title: "Artify | Auth",
 	description: "Authenticating users for Artify",
 };
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+const AuthLayoutWrapper = ({ children }: { children: ReactNode }) => {
 	return (
 		<html>
 			<body>
-				<div>auth layout</div>
-				{children}
+				<AuthLayout>{children}</AuthLayout>
 			</body>
 		</html>
 	);
 };
 
-export default AuthLayout;
+export default AuthLayoutWrapper;
