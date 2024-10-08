@@ -41,27 +41,27 @@ const Navigation = () => {
 
 const navigations = [
 	{
-		label: "Home",
+		label: "ホーム",
 		icon: <IconHome />,
 		path: "/",
 	},
 	{
-		label: "Contest",
+		label: "コンテスト",
 		icon: <IconContest />,
 		path: "/contest",
 	},
 	{
-		label: "Workshop",
+		label: "ワークショップ",
 		icon: <IconWorkshop />,
 		path: "/workshop",
 	},
 	{
-		label: "My Courses",
+		label: "勉強",
 		icon: <IconCourse />,
 		path: "/my-courses",
 	},
 	{
-		label: "Schedule",
+		label: "スケジュール",
 		icon: <IconSchedule />,
 		path: "/schedule",
 	},

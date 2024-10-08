@@ -4,18 +4,21 @@
 
 @layer components {
 	.mainSection {
-		@apply h-full p-4 bg-white rounded-2xl;
+		@apply h-full bg-white rounded-2xl p-2;
+	}
+	.mainWidth {
+		@apply w-[calc(100vw-260px-400px-(10px*3))]
 	}
 }
 
 .swiper-pagination-bullet {
 	background-color: white !important;
-	opacity: 0.2	!important;
+	opacity: 0.4	!important;
 }
 
 .pagination-active {
 	background-color: white !important;
-	opacity: 0.6 !important;
+	opacity: 0.8 !important;
 }
 
 .swiper-button-prev, .swiper-button-next {
