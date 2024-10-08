@@ -1,10 +1,11 @@
 "use client";
 import {
-	IconContest,
-	IconCourse,
+	IconCommunity,
 	IconHome,
+	IconLearn,
+	IconNote,
 	IconSchedule,
-	IconWorkshop,
+	IconSetting,
 } from "@/components/icon/navigation";
 import Link from "next/link";
 import React from "react";
@@ -12,8 +13,10 @@ import { usePathname } from "next/navigation";
 
 const Navigation = () => {
 	const pathname = usePathname();
+
 	return (
 		<div className="mainSection">
+			{/* navigation  */}
 			<nav>
 				<ul className="flex flex-col gap-0.5">
 					{navigations.map((n, index) => (
@@ -35,6 +38,15 @@ const Navigation = () => {
 					))}
 				</ul>
 			</nav>
+
+			{/* theme setting  */}
+			{/* <button
+				className={`block py-3 px-3 rounded-border10`}
+			>
+				<div className="flex items-center gap-2">
+					<span>テーマ</span>
+				</div>
+			</button> */}
 		</div>
 	);
 };
@@ -46,24 +58,29 @@ const navigations = [
 		path: "/",
 	},
 	{
-		label: "コンテスト",
-		icon: <IconContest />,
-		path: "/contest",
+		label: "コミュニティー",
+		icon: <IconCommunity />,
+		path: "/community",
 	},
 	{
-		label: "ワークショップ",
-		icon: <IconWorkshop />,
-		path: "/workshop",
+		label: "ノート",
+		icon: <IconNote />,
+		path: "/note",
 	},
 	{
-		label: "勉強",
-		icon: <IconCourse />,
-		path: "/my-courses",
+		label: "学習",
+		icon: <IconLearn />,
+		path: "/learning",
 	},
 	{
 		label: "スケジュール",
 		icon: <IconSchedule />,
 		path: "/schedule",
+	},
+	{
+		label: "設定",
+		icon: <IconSetting />,
+		path: "/setting",
 	},
 ];
 

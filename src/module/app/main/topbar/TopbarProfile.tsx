@@ -23,7 +23,7 @@ const TopbarProfile = () => {
 
 			{/* notification icon  */}
 			<button className="flex items-center justify-center w-10 h-10 transition-all rounded-full group bg-primary hover:bg-primaryHover">
-				<span className="text-white opacity-80 group-hover:opacity-100">
+				<span className="text-white opacity-70 group-hover:opacity-100">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width={28}
@@ -58,7 +58,7 @@ const TopbarProfile = () => {
 				</div>
 				<div className="ml-4 text-right text-white">
 					<p className="text-sm font-semibold">MeowCopter</p>
-					<p className="text-xs opacity-80">meow.admin@gmail.com</p>
+					<p className="text-xs opacity-70">meow.admin@gmail.com</p>
 				</div>
 				<div className="relative h-full ml-2 aspect-square">
 					<Image

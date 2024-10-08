@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import React, { ReactNode } from "react";
 import "../globals.scss";
 import { M_PLUS_Rounded_1c } from "next/font/google";
+import StoreProvider from "../StoreProvider";
 
 const MPLUSRounded1c = M_PLUS_Rounded_1c({
 	subsets: ["latin", "cyrillic"],
@@ -18,7 +19,9 @@ const AppLayout = ({ children }: { children: ReactNode }) => {
 	return (
 		<html>
 			<body className={`${MPLUSRounded1c.className}`}>
-				<MainLayout>{children}</MainLayout>
+				<StoreProvider>
+					<MainLayout>{children}</MainLayout>
+				</StoreProvider>
 			</body>
 		</html>
 	);

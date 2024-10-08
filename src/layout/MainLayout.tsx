@@ -10,8 +10,8 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 			<div className="grid grid-cols-[260px_1fr_400px] p-2.5 bg-background-light overflow-hidden gap-2.5">
 				<Navigation></Navigation>
 				<main className="h-[calc(100vh-80px)] flex">
-					<div className="flex flex-1 overflow-y-scroll mainSection">
-						<div className="flex flex-1 overflow-y-scroll rounded-border10">{children}</div>
+					<div className="flex flex-1 overflow-y-hidden mainSection">
+						<div className="flex flex-1 overflow-y-scroll rounded-border10 scrollbar-hidden">{children}</div>
 					</div>
 				</main>
 				<Sidebar></Sidebar>
