@@ -56,9 +56,9 @@ const navigations = [
 		path: "/workshop",
 	},
 	{
-		label: "Courses",
+		label: "My Courses",
 		icon: <IconCourse />,
-		path: "/courses",
+		path: "/my-courses",
 	},
 	{
 		label: "Schedule",

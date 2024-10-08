@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React, { ReactNode } from "react";
-import "../globals.css";
+import "../globals.scss";
 import AuthLayout from "@/layout/AuthLayout";
 
 export const metadata: Metadata = {

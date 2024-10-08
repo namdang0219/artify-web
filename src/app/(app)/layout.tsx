@@ -1,7 +1,7 @@
 import MainLayout from "@/layout/MainLayout";
 import { Metadata } from "next";
 import React, { ReactNode } from "react";
-import '../globals.css';
+import '../globals.scss';
 
 export const metadata: Metadata = {
 	title: "Artify",
