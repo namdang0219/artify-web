@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+	body {
+		@apply bg-background-light dark:bg-background-dark;
+	}
 	.mainSection {
-		@apply h-full bg-white rounded-2xl p-2;
+		@apply h-full bg-white dark:bg-background-dark-main rounded-2xl p-2 text-black dark:text-white;
 	}
 	.mainWidth {
-		@apply w-[calc(100vw-260px-400px-(10px*3))];
+		@apply w-[calc(100vw-240px-350px-56px)];
 	}
 }
 

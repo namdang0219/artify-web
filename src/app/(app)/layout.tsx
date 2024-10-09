@@ -4,6 +4,8 @@ import React, { ReactNode } from "react";
 import "../globals.scss";
 import { M_PLUS_Rounded_1c } from "next/font/google";
 import StoreProvider from "../StoreProvider";
+import { ModalProvider } from "@/context/modal-context";
+import ModalBase from "../../components/modal/ModalBase";
 
 const MPLUSRounded1c = M_PLUS_Rounded_1c({
 	subsets: ["latin", "cyrillic"],
@@ -20,7 +22,10 @@ const AppLayout = ({ children }: { children: ReactNode }) => {
 		<html>
 			<body className={`${MPLUSRounded1c.className}`}>
 				<StoreProvider>
-					<MainLayout>{children}</MainLayout>
+					<ModalProvider>
+						<ModalBase />
+						<MainLayout>{children}</MainLayout>
+					</ModalProvider>
 				</StoreProvider>
 			</body>
 		</html>

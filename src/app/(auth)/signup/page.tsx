@@ -75,7 +75,7 @@ const SignupPage = () => {
 						/>
 					</div>
 					<AuthButton className="mt-10">Sign Up</AuthButton>
-					<div className="mt-6 text-center">
+					<div className="mt-6 text-center dark:text-white">
 						Already have an account?{" "}
 						<span
 							className="font-semibold cursor-pointer text-primary hover:underline"
@@ -87,7 +87,7 @@ const SignupPage = () => {
 				</div>
 			</form>
 			{/* Bottom Section  */}
-			<div className="flex gap-10 h-[70px] text-black text-xl">
+			<div className="flex gap-10 h-[70px] text-black text-xl dark:text-white">
 				<div className="flex items-center justify-center flex-1 gap-3 transition-all border cursor-pointer border-primary hover:text-white rounded-border10 hover:bg-primary">
 					<IconGoogle />
 					<span>Google</span>
