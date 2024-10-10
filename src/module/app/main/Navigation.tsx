@@ -19,6 +19,7 @@ import { IGlobalState, setTheme } from "@/store/global/globalSlice";
 import { useModal } from "@/context/modal-context";
 import { useWindowSize } from "usehooks-ts";
 import { useRect } from "@/hook/useRect";
+import { SideButton } from "@/components/button";
 
 const Navigation = () => {
 	const pathname = usePathname();
@@ -64,18 +65,17 @@ const Navigation = () => {
 				<ul className="flex flex-col gap-0.5">
 					{navList.map((n, index) => (
 						<li key={index}>
-							<Link
-								href={n.path}
-								className={`block py-3 px-3 rounded-border10 ${
-									pathname === n.path
-										? "bg-secondary text-white"
-										: "hover:bg-hoverGray dark:hover:bg-hoverGray-dark"
-								}`}
-							>
-								<div className="flex items-center gap-2">
-									{n.icon}
-									<span>{n.label}</span>
-								</div>
+							<Link href={n.path}>
+								<SideButton
+									className={`${
+										pathname === n.path
+											? "bg-secondary text-white"
+											: "hover:bg-hoverGray dark:hover:bg-hoverGray-dark"
+									}`}
+									icon={n.icon}
+								>
+									{n.label}
+								</SideButton>
 							</Link>
 						</li>
 					))}
@@ -107,7 +107,6 @@ const ThemeModal = ({ elementRect }: { elementRect: DOMRect | undefined }) => {
 	const windowSize = useWindowSize();
 	const { theme } = useAppSelector((state: RootState) => state.global);
 	const { closeModal } = useModal();
-
 	const handleChooseTheme = (theme: IGlobalState["theme"]) => {
 		dispatch(setTheme(theme));
 		closeModal();
@@ -123,18 +122,19 @@ const ThemeModal = ({ elementRect }: { elementRect: DOMRect | undefined }) => {
 			className="absolute z-50 p-2 space-y-0.5 bg-white dark:bg-background-dark-main rounded-border10 border border-lightGray dark:border-gray-500"
 		>
 			{themeList.map((b) => (
-				<button
+				<SideButton
 					key={b.theme}
-					className={`flex items-center justify-between p-3 w-full rounded-lg ${
+					className={`${
 						b.theme === theme
 							? "bg-secondary text-white"
 							: "hover:bg-hoverGray dark:hover:bg-hoverGray-dark text-dark dark:text-white"
-					}`}
+					} flex-row-reverse`}
+					contentClassName="flex-row-reverse justify-between"
 					onClick={() => handleChooseTheme(b.theme)}
+					icon={b.icon}
 				>
-					<span>{b.label}</span>
-					{b.icon}
-				</button>
+					{b.label}
+				</SideButton>
 			))}
 		</div>
 	);
