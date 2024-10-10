@@ -1,5 +1,5 @@
-import { CourseType } from "@/app/(app)/(home)/page";
 import { SliderItem } from "@/components/item";
+import { CourseType } from "@/types/CourseType";
 import React from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";

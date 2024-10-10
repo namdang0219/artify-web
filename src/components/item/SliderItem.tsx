@@ -1,4 +1,4 @@
-import { CourseType } from "@/app/(app)/(home)/page";
+import { CourseType } from "@/types/CourseType";
 import Image from "next/image";
 import React from "react";
 
@@ -11,6 +11,7 @@ const SliderItem = ({ item: { banner } }: { item: CourseType }) => {
 				width={1000}
 				height={1000}
 				className="object-cover object-center w-full h-full rounded-border10"
+				priority
 			></Image>
 		</div>
 	);

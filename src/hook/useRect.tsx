@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from "react";
 import { useWindowSize } from "usehooks-ts";
 
-export function useRect(ref: RefObject<HTMLButtonElement>) {
+export function useRect(ref: RefObject<HTMLElement>) {
 	const [elementRect, setElementRect] = useState<DOMRect>();
 	const windowSize = useWindowSize();
 
