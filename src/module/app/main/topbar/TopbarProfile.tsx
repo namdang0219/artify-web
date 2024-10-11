@@ -1,3 +1,4 @@
+"use client";
 import { SideButton } from "@/components/button";
 import {
 	IconBell,
@@ -11,6 +12,7 @@ import { Modal } from "@/components/modal";
 import { useModal } from "@/context/modal-context";
 import { useRect } from "@/hook/useRect";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 import { useWindowSize } from "usehooks-ts";
 
@@ -74,6 +76,14 @@ const TopbarProfile = () => {
 };
 
 const ProfileModal = () => {
+	const { push } = useRouter();
+	const { closeModal } = useModal();
+
+	const handleClickOption = (link: string) => {
+		push(link);
+		closeModal();
+	};
+
 	return (
 		<div className="bg-white dark:bg-background-dark-main w-[240px] rounded-border15 dark:text-white border border-lightGray dark:border-gray-500 p-2">
 			{profileModalOptions.map((option) => (
@@ -81,6 +91,7 @@ const ProfileModal = () => {
 					key={option.label}
 					icon={option.icon}
 					className="hover:bg-hoverGray dark:hover:bg-hoverGray-dark"
+					onClick={() => handleClickOption(option.link)}
 				>
 					{option.label}
 				</SideButton>
@@ -93,18 +104,22 @@ const profileModalOptions = [
 	{
 		label: "プロフィール",
 		icon: <IconProfile />,
+		link: "/profile",
 	},
 	{
 		label: "プライバシー",
 		icon: <IconPrivacy />,
+		link: "/privacy",
 	},
 	{
 		label: "ヘルプ",
 		icon: <IconHelp />,
+		link: "/help",
 	},
 	{
 		label: "ログアウト",
 		icon: <IconLogout />,
+		link: "/",
 	},
 ];
 
