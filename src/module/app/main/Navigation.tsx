@@ -11,7 +11,7 @@ import {
 	IconSetting,
 } from "@/components/icon/navigation";
 import Link from "next/link";
-import React, { ReactNode, useRef } from "react";
+import React, { CSSProperties, ReactNode, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store/store";
@@ -20,16 +20,33 @@ import { useModal } from "@/context/modal-context";
 import { useWindowSize } from "usehooks-ts";
 import { useRect } from "@/hook/useRect";
 import { SideButton } from "@/components/button";
+import { Modal } from "@/components/modal";
 
 const Navigation = () => {
 	const pathname = usePathname();
 	const { theme } = useAppSelector((state: RootState) => state.global);
 	const { showModal } = useModal();
+	const windowSize = useWindowSize();
 	const ref = useRef<HTMLButtonElement>(null);
 	const { elementRect } = useRect(ref);
 
 	const openThemeModal = () => {
-		showModal(<ThemeModal elementRect={elementRect} />);
+		showModal(
+			<Modal
+				modalPosition={{
+					left: elementRect?.left,
+					bottom:
+						elementRect?.y && windowSize.height - elementRect?.y,
+				}}
+			>
+				<ThemeModal
+					modalStyle={{
+						width: elementRect?.width,
+						transform: "translateY(-100%)",
+					}}
+				></ThemeModal>
+			</Modal>
+		);
 	};
 
 	function renderThemeText(theme: IGlobalState["theme"]) {
@@ -102,11 +119,11 @@ const Navigation = () => {
 	);
 };
 
-const ThemeModal = ({ elementRect }: { elementRect: DOMRect | undefined }) => {
+const ThemeModal = ({ modalStyle }: { modalStyle: CSSProperties }) => {
 	const dispatch = useAppDispatch();
-	const windowSize = useWindowSize();
 	const { theme } = useAppSelector((state: RootState) => state.global);
 	const { closeModal } = useModal();
+
 	const handleChooseTheme = (theme: IGlobalState["theme"]) => {
 		dispatch(setTheme(theme));
 		closeModal();
@@ -114,11 +131,7 @@ const ThemeModal = ({ elementRect }: { elementRect: DOMRect | undefined }) => {
 
 	return (
 		<div
-			style={{
-				width: elementRect?.width,
-				left: elementRect?.left,
-				bottom: elementRect?.y && windowSize.height - elementRect?.y,
-			}}
+			style={modalStyle}
 			className="absolute z-50 p-2 space-y-0.5 bg-white dark:bg-background-dark-main rounded-border10 border border-lightGray dark:border-gray-500"
 		>
 			{themeList.map((b) => (

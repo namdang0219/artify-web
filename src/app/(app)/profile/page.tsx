@@ -1,97 +1,62 @@
-import { IconLink, IconLocation } from "@/components/icon/profile";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, { ReactNode, useState } from "react";
+import ProfileHeader from "./ProfileHeader";
+import CertificationTab from "./CertificationTab";
+import BlogTab from "./BlogTab";
+
+interface ITabContent {
+	tab: "Certification" | "Blog";
+	component: ReactNode;
+	name: string;
+}
 
 const ProfilePage = () => {
+	const [tabContent, setTabContent] =
+		useState<ITabContent["tab"]>("Certification");
+
+	const handleDisplayTab = () => {
+		switch (tabContent) {
+			case "Certification":
+				return <CertificationTab />;
+			case "Blog":
+				return <BlogTab />;
+			default:
+				return <CertificationTab />;
+		}
+	};
+
 	return (
-		<div className="flex-1">
-			<div className="flex items-center gap-12 p-6 rounded-border10">
-				{/* left container  */}
-				<div className="flex flex-col gap-2">
-					{/* image  */}
-					<div className="relative w-[180px] h-[180px] rounded-full overflow-hidden">
-						<Image
-							src={
-								"https://images.unsplash.com/photo-1500621679649-37b519bef4fd?q=80&w=3388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-							}
-							alt="profile-image"
-							className="w-full h-full object-center object-cover"
-							width={500}
-							height={500}
-							priority
-						></Image>
-					</div>
+		<div className="flex-1 flex flex-col">
+			{/* header  */}
+			<ProfileHeader></ProfileHeader>
 
-					{/* address  */}
-					<div>
-            {/* role  */}
-              <div>
-                <div className="mx-auto bg-green-500 text-white px-3 py-0.5 tracking-wider rounded w-fit text-sm">講師</div>
-              </div>
-
-            {/* location  */}
-            <div className="flex items-center gap-1 justify-center mt-2">
-              <span className="text-red-500">
-                <IconLocation />
-              </span>
-              <span>日本、大阪</span>
-            </div>
-          </div>
+			{/* main container  */}
+			<div className="flex-1 px-8">
+				{/* tab area  */}
+				<div className="border-b-[1px] pb-4 border-b-gray-200 dark:border-slate-700 flex items-center pl-10 gap-12">
+					{tabList.map((tab) => (
+						<button
+							key={tab.tab}
+							onClick={() => setTabContent(tab.tab)}
+							className={`text-lightGray tracking-wider ${
+								tabContent === tab.tab && "text-secondary"
+							}`}
+						>
+							{tab.name}
+						</button>
+					))}
 				</div>
 
-				{/* right container  */}
-				<div className="flex-1 flex flex-col">
-					{/* name and job  */}
-					<div className="flex justify-between">
-						{/* name and job  */}
-						<div>
-							<p className="text-4xl tracking-wider">永野芽郁</p>
-							<p className="mt-2 text-lightGray inline-block">
-								デザイナー
-							</p>
-						</div>
-
-						{/* action button  */}
-						<div className="flex gap-2">
-							<button className="px-6 py-2 h-fit border border-secondary rounded-full text-secondary hover:text-white hover:bg-secondary transition-all">
-								編集
-							</button>
-							<button className="px-6 py-2 h-fit border border-secondary bg-secondary text-white hover:text-secondary hover:bg-white rounded-full transition-all">
-								編集
-							</button>
-						</div>
-					</div>
-
-					{/* link  */}
-					<div className="flex flex-col gap-1 mt-3.5 flex-1">
-						<p className="flex items-center gap-2">
-							<span className="text-lightGray inline-block">
-								<IconLink></IconLink>
-							</span>
-							<Link
-								href="https://www.instagram.com/mei_nagano0924official"
-								className="text-blue-500 hover:underline line-clamp-1"
-							>
-								https://www.instagram.com/mei_nagano0924official
-							</Link>
-						</p>
-						<p className="flex items-center gap-2">
-							<span className="text-lightGray inline-block">
-								<IconLink></IconLink>
-							</span>
-							<Link
-								href="https://www.stardust.co.jp/talent/section1/naganomei/"
-								className="text-blue-500 hover:underline line-clamp-1"
-							>
-								https://www.stardust.co.jp/talent/section1/naganomei/
-							</Link>
-						</p>
-					</div>
-				</div>
+				{/* content  */}
+				<div className="pt-6">{handleDisplayTab()}</div>
 			</div>
 		</div>
 	);
 };
+
+const tabList: ITabContent[] = [
+	{ tab: "Blog", component: <BlogTab />, name: "ブログ" },
+	{ tab: "Certification", component: <CertificationTab />, name: "証明書" },
+];
 
 export default ProfilePage;
