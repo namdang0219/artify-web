@@ -5,7 +5,7 @@ import React from "react";
 
 const ProfileHeader = () => {
 	return (
-		<div className="flex items-center gap-12 p-6 rounded-border10">
+		<div className="flex gap-12 p-6 rounded-border10">
 			{/* left container  */}
 			<div className="flex flex-col gap-2">
 				{/* image  */}
@@ -42,7 +42,7 @@ const ProfileHeader = () => {
 			</div>
 
 			{/* right container  */}
-			<div className="flex-1 flex flex-col">
+			<div className="flex-1 flex flex-col mt-6">
 				{/* name and job  */}
 				<div className="flex justify-between">
 					{/* name and job  */}

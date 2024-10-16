@@ -12,7 +12,7 @@ interface ITabContent {
 
 const ProfilePage = () => {
 	const [tabContent, setTabContent] =
-		useState<ITabContent["tab"]>("Certification");
+		useState<ITabContent["tab"]>("Blog");
 
 	const handleDisplayTab = () => {
 		switch (tabContent) {

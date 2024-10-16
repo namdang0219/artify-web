@@ -16,7 +16,7 @@ const Topbar = () => {
 				<h1
 					className={`${inriaSerif.className} font-bold text-3xl text-white w-[250px]`}
 				>
-					Artify
+					🎨Artify
 				</h1>
 				<div className="flex items-center gap-8 text-white">
 					<button className="flex items-center gap-1 opacity-75 hover:opacity-100">

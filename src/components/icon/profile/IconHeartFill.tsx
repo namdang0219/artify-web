@@ -1,11 +1,11 @@
 import React from "react";
 
-const IconHeartFill = () => {
+const IconHeartFill = ({size = 28}: {size: number}) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width={28}
-			height={28}
+			width={size}
+			height={size}
 			viewBox="0 0 48 48"
 		>
 			<path
