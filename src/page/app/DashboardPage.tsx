@@ -1,10 +1,10 @@
 import React from 'react';
 import MainLayout from 'layout/MainLayout';
 
-const DashboardScreen = () => {
+const DashboardPage = () => {
     return (
         <MainLayout>DashboardScreen</MainLayout>
     );
 };
 
-export default DashboardScreen;
+export default DashboardPage;

@@ -1,12 +1,12 @@
 import MainLayout from 'layout/MainLayout';
 import React from 'react';
 
-const HelpScreen = () => {
+const CoursePage = () => {
     return (
         <MainLayout>
-            HelpScreen
+            CoursePage
         </MainLayout>
     );
 };
 
-export default HelpScreen;
+export default CoursePage;

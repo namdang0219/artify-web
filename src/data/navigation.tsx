@@ -22,7 +22,7 @@ export const navigations: INavigation[] = [
 			en: "Dashboard",
 			ja: "ダッシュボード",
 		},
-		href: "/",
+		href: "/dashboard",
 		icon: <IconDashboard></IconDashboard>,
 	},
 	{

@@ -1,7 +1,7 @@
 import MainLayout from "layout/MainLayout";
 
-const SettingScreen = () => {
+const SettingPage = () => {
 	return <MainLayout>Setting</MainLayout>;
 };
 
-export default SettingScreen;
+export default SettingPage;

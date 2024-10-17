@@ -1,12 +1,12 @@
 import MainLayout from 'layout/MainLayout';
 import React from 'react';
 
-const CommunityScreen = () => {
+const HelpPage = () => {
     return (
         <MainLayout>
-            CommunityScreen
+            HelpScreen
         </MainLayout>
     );
 };
 
-export default CommunityScreen;
+export default HelpPage;

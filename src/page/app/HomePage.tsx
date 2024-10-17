@@ -1,12 +1,12 @@
 import MainLayout from 'layout/MainLayout';
 import React from 'react';
 
-const CalendarScreen = () => {
+const HomePage = () => {
     return (
         <MainLayout>
-            CalendarScreen
+            HomePage
         </MainLayout>
     );
 };
 
-export default CalendarScreen;
+export default HomePage;

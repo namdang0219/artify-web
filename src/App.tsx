@@ -1,19 +1,26 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
-import DashboardScreen from "./page/app/DashboardScreen";
-import CommunityScreen from "./page/app/CommunityScreen";
-import CalendarScreen from "./page/app/CalendarScreen";
-import HelpScreen from "./page/app/HelpScreen";
-import SettingScreen from "./page/app/SettingScreen";
+import DashboardPage from "./page/app/DashboardPage";
+import CommunityPage from "./page/app/CommunityPage";
+import CalendarPage from "./page/app/CalendarPage";
+import HelpPage from "./page/app/HelpPage";
+import SettingPage from "./page/app/SettingPage";
+import HomePage from "page/app/HomePage";
+import CoursePage from "page/app/CoursePage";
+import ContestPage from "page/app/ContestPage";
+import WorkshopPage from "page/app/WorkshopPage";
 
 const App = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<DashboardScreen />}></Route>
-			<Route path="/community" element={<CommunityScreen />}></Route>
-			<Route path="/calendar" element={<CalendarScreen />}></Route>
-			<Route path="/help" element={<HelpScreen />}></Route>
-			<Route path="/setting" element={<SettingScreen />}></Route>
+			<Route path="/dashboard" element={<DashboardPage />}></Route>
+			<Route path="/community" element={<CommunityPage />}></Route>
+			<Route path="/calendar" element={<CalendarPage />}></Route>
+			<Route path="/help" element={<HelpPage />}></Route>
+			<Route path="/setting" element={<SettingPage />}></Route>
+			<Route path="/" element={<HomePage />}></Route>
+			<Route path="/course" element={<CoursePage />}></Route>
+			<Route path="/contest" element={<ContestPage />}></Route>
+			<Route path="/workshop" element={<WorkshopPage />}></Route>
 		</Routes>
 	);
 };

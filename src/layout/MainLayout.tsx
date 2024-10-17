@@ -1,4 +1,5 @@
 import Sidebar from "module/main/Sidebar";
+import Topbar from "module/main/Topbar";
 import { FC, PropsWithChildren } from "react";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
@@ -11,7 +12,10 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 			<div className="w-[90px] h-full"></div>
 
 			{/* main container  */}
-			<div className="flex-1">{children}</div>
+			<div className="flex-1 flex flex-col">
+				<Topbar />
+				<div className="flex-1">{children}</div>
+			</div>
 		</div>
 	);
 };
