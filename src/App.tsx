@@ -1,12 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "./store/reducer";
+import { Route, Routes } from "react-router-dom";
+import DashboardScreen from "./page/app/DashboardScreen";
+import CommunityScreen from "./page/app/CommunityScreen";
+import CalendarScreen from "./page/app/CalendarScreen";
+import HelpScreen from "./page/app/HelpScreen";
+import SettingScreen from "./page/app/SettingScreen";
 
 const App = () => {
-	const { theme } = useSelector((state: RootState) => state.global);
-	console.log("🚀 ~ App ~ theme:", theme)
-
-	return <div className="text-teal-500">App</div>;
+	return (
+		<Routes>
+			<Route path="/" element={<DashboardScreen />}></Route>
+			<Route path="/community" element={<CommunityScreen />}></Route>
+			<Route path="/calendar" element={<CalendarScreen />}></Route>
+			<Route path="/help" element={<HelpScreen />}></Route>
+			<Route path="/setting" element={<SettingScreen />}></Route>
+		</Routes>
+	);
 };
 
 export default App;
