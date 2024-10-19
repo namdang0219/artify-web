@@ -1,7 +1,12 @@
+import { IconArrowDown } from "icon/topbar";
 import { INavigation } from "./navigation";
 
 interface ITopbarContent {
 	pageLinks: INavigation[];
+	search: {
+		placeholder: { en: string; ja: string };
+		buttonLabel: { en: string; ja: string };
+	};
 }
 
 export const topbarContent: ITopbarContent = {
@@ -20,7 +25,7 @@ export const topbarContent: ITopbarContent = {
 				ja: "コース",
 			},
 			href: "/course",
-			icon: <></>,
+			icon: <IconArrowDown />,
 		},
 		{
 			label: {
@@ -39,4 +44,14 @@ export const topbarContent: ITopbarContent = {
 			icon: <></>,
 		},
 	],
+	search: {
+		placeholder: {
+			en: "Search for courses, contest,...etc",
+			ja: "コース・コンテストなどを検索する",
+		},
+		buttonLabel: {
+			en: "Search",
+			ja: "検索",
+		},
+	},
 };

@@ -9,10 +9,10 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 			<Sidebar />
 
 			{/* navigation space  */}
-			<div className="w-[90px] h-full"></div>
+			<div className="w-[80px] h-full"></div>
 
 			{/* main container  */}
-			<div className="flex-1 flex flex-col">
+			<div className="flex-1 flex flex-col bg-bgLight">
 				<Topbar />
 				<div className="flex-1">{children}</div>
 			</div>

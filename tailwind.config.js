@@ -9,6 +9,7 @@ module.exports = {
 				secondary: "",
 				lightGray: "",
 				darkGray: "",
+				bgLight: "#e2e8f0",
 			},
 			borderRadius: {
 				round10: "10px",

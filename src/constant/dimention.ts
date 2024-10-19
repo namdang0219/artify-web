@@ -1,3 +1,3 @@
 export const DIMENTIONS = {
-	HEADER_HEIGHT: 60,
+	HEADER_HEIGHT: 65,
 };

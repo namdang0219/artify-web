@@ -6,12 +6,10 @@ import {
 	IconHelp,
 	IconSetting,
 } from "icon/navigation";
+import { ILanguage } from "hook/useLanguage";
 
 export interface INavigation {
-	label: {
-		en: string;
-		ja: string;
-	};
+	label: ILanguage;
 	href: string;
 	icon: ReactElement;
 }
