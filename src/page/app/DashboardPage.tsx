@@ -1,9 +1,14 @@
+import { Button } from "components/button";
 import { CommentItem } from "components/item";
 import MainLayout from "layout/MainLayout";
 import { commentMocks } from "mock/commentMocks";
 import ReactPlayer from "react-player/lazy";
+import { useSelector } from "react-redux";
+import { RootState } from "store/configureStore";
 
 const DashboardPage = () => {
+	const { photoURL } = useSelector((state: RootState) => state.user);
+
 	const courseMock = {
 		title: "Learn JavaScript Basics",
 		description:
@@ -15,7 +20,8 @@ const DashboardPage = () => {
 	return (
 		<MainLayout>
 			<div className="grid w-full grid-cols-[1fr_400px]">
-				<div className="p-3">
+				{/* main container  */}
+				<div className="px-5 py-3">
 					{/* video container  */}
 					<div className="overflow-hidden bg-black rounded-round10">
 						<div className="w-full max-w-[1200px] mx-auto aspect-video">
@@ -44,14 +50,34 @@ const DashboardPage = () => {
 						</div>
 
 						{/* comment field  */}
-						<div className="min-h-[calc(100vh/2)] mt-8">
+						<div className="mt-8">
 							<p className="flex items-center gap-2">
 								<span className="text-xl font-semibold">
 									Comment
 								</span>
 								<span className="text-darkGray">{`(${commentMocks.length})`}</span>
 							</p>
-							<div className="flex flex-col gap-4 mt-2">
+
+							{/* your comment  */}
+							<div className="flex gap-4 mt-3">
+								<div className="size-[40px] rounded-full overflow-hidden shrink-0">
+									<img
+										src={photoURL}
+										alt="avatar"
+										className="object-cover object-center w-full h-full"
+									/>
+								</div>
+								<div className="flex flex-1 gap-2">
+									<textarea
+										placeholder="Write a comment..."
+										rows={1}
+										className="flex-1 block py-2 border-b border-b-darkGray shrink-0"
+									/>
+									<Button>Comment</Button>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-4 mt-4 ml-2 pb-28">
 								{commentMocks.length > 0 &&
 									commentMocks.map((c) => (
 										<CommentItem key={c.cid} item={c} />
@@ -60,7 +86,36 @@ const DashboardPage = () => {
 						</div>
 					</div>
 				</div>
-				<div className="bg-pink-100"></div>
+
+				{/* right container  */}
+				<div className="pt-3 pr-3">
+					<div className="flex flex-col w-full h-full gap-5 overflow-hidden">
+						{Array(8)
+							.fill(null)
+							.map((_, index) => (
+								<div key={index}>
+									<div className="flex gap-3 cursor-pointer group">
+										<div className="overflow-hidden rounded w-28 aspect-video shrink-0">
+											<img
+												src="https://plus.unsplash.com/premium_photo-1728712590654-c2a8901c5a4a?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+												alt="course-thumb"
+												className="object-cover object-center w-full h-full transition-all group-hover:scale-[1.024]"
+											/>
+										</div>
+										<div>
+											<p className="line-clamp-2 group-hover:text-primary">
+												Learn JavaScript Basics Learn
+												JavaScript Basics
+											</p>
+											<p className="text-xs text-darkGray">
+												MeowCopter Clone
+											</p>
+										</div>
+									</div>
+								</div>
+							))}
+					</div>
+				</div>
 			</div>
 		</MainLayout>
 	);

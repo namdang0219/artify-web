@@ -1,8 +1,12 @@
 import { replyMocks } from "mock/replyMocks";
 import ReplyItem from "./ReplyItem";
 import { useState } from "react";
+import { Button } from "components/button";
+import { useSelector } from "react-redux";
+import { RootState } from "store/configureStore";
 
 const CommentItem = ({ item }: { item: any }) => {
+	const { photoURL } = useSelector((state: RootState) => state.user);
 	const [showReply, setShowReply] = useState(false);
 
 	return (
@@ -41,14 +45,38 @@ const CommentItem = ({ item }: { item: any }) => {
 
 					{/* reply container  */}
 					{showReply && (
-						<div className="flex flex-col gap-4 mt-4">
-							{replyMocks.length > 0 &&
-								replyMocks
-									.filter((r) => item.reply.includes(r.rid))
-									.map((item) => (
-										<ReplyItem key={item.rid} item={item} />
-									))}
-						</div>
+						<>
+							<div className="flex flex-col gap-4 mt-4">
+								{replyMocks.length > 0 &&
+									replyMocks
+										.filter((r) =>
+											item.reply.includes(r.rid)
+										)
+										.map((item) => (
+											<ReplyItem
+												key={item.rid}
+												item={item}
+											/>
+										))}
+							</div>
+							<div className="flex gap-4 mt-4">
+								<div className="size-[30px] rounded-full overflow-hidden shrink-0">
+									<img
+										src={photoURL}
+										alt="avatar"
+										className="object-cover object-center w-full h-full"
+									/>
+								</div>
+								<div className="flex flex-1 gap-2">
+									<textarea
+										placeholder="Write a comment..."
+										rows={1}
+										className="flex-1 block py-2 border-b border-b-darkGray shrink-0"
+									/>
+									<Button>Comment</Button>
+								</div>
+							</div>
+						</>
 					)}
 				</div>
 			</div>

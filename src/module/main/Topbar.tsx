@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { RootState } from "store/configureStore";
 import { Drawer } from "antd";
 import { useState } from "react";
+import { Button } from "components/button";
 
 const Topbar = () => {
 	const { displayName, email, photoURL } = useSelector(
@@ -61,11 +62,9 @@ const Topbar = () => {
 					<input
 						type="text"
 						placeholder={searchPlaceholder}
-						className="w-[300px] h-[40px] rounded-round10 outline-none px-4"
+						className="w-[400px] h-[40px] rounded-round10 outline-none px-4 bg-gray-100"
 					/>
-					<button className="h-[40px] px-4 rounded-round10 text-white hover:bg-primary-hover transition-all bg-primary">
-						{searchButton}
-					</button>
+					<Button>{searchButton}</Button>
 				</div>
 
 				{/* profile  */}
@@ -98,7 +97,12 @@ const Topbar = () => {
 				</div>
 			</div>
 
-			<Drawer title="Message" onClose={onClose} open={open} destroyOnClose>
+			<Drawer
+				title="Message"
+				onClose={onClose}
+				open={open}
+				destroyOnClose
+			>
 				<p>Some contents...</p>
 				<p>Some contents...</p>
 				<p>Some contents...</p>
