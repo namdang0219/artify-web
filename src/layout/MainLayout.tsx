@@ -4,17 +4,17 @@ import { FC, PropsWithChildren } from "react";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
-		<div className="flex relative w-screen min-h-screen">
+		<div className="relative flex w-screen overflow-hidden">
 			{/* absolute sidebar w-[90px]  */}
 			<Sidebar />
 
 			{/* navigation space  */}
-			<div className="w-[80px] h-full"></div>
+			<div className="w-[80px]"></div>
 
 			{/* main container  */}
-			<div className="flex-1 flex flex-col bg-bgLight">
+			<div className="flex-1 bg-white">
 				<Topbar />
-				<div className="flex-1">{children}</div>
+				<div className="flex flex-1 h-[calc(100vh-65px)] overflow-y-auto">{children}</div>
 			</div>
 		</div>
 	);

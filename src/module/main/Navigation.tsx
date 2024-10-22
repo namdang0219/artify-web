@@ -1,7 +1,7 @@
 import { INavigation, navigations } from "data/navigation";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { RootState } from "store/reducer";
+import { RootState } from "store/configureStore";
 
 const Navigation = () => {
 	const { language } = useSelector((state: RootState) => state.global);

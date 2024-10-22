@@ -8,7 +8,7 @@ module.exports = {
 				"primary-hover": "#4f46e5",
 				secondary: "",
 				lightGray: "",
-				darkGray: "",
+				darkGray: "#9ca3af",
 				bgLight: "#e2e8f0",
 			},
 			borderRadius: {
