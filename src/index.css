@@ -12,6 +12,9 @@
 	.content-layout {
 		@apply w-full px-5 py-3;
 	}
+	.learning-layout {
+		@apply grid w-full grid-cols-[1fr_400px] gap-5
+	}
 	.flex-center {
 		@apply flex items-center justify-center;
 	}

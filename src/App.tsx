@@ -8,6 +8,8 @@ import HomePage from "page/app/HomePage";
 import CoursePage from "page/app/CoursePage";
 import ContestPage from "page/app/ContestPage";
 import WorkshopPage from "page/app/WorkshopPage";
+import VideoLearningPage from "page/app/(learning)/VideoLearningPage";
+import OnlineLearningPage from "page/app/(learning)/OnlineLearningPage";
 
 const App = () => {
 	return (
@@ -21,6 +23,16 @@ const App = () => {
 			<Route path="/course" element={<CoursePage />}></Route>
 			<Route path="/contest" element={<ContestPage />}></Route>
 			<Route path="/workshop" element={<WorkshopPage />}></Route>
+
+			{/* learning  */}
+			<Route
+				path="/learning/video"
+				element={<VideoLearningPage />}
+			></Route>
+			<Route
+				path="/learning/online"
+				element={<OnlineLearningPage />}
+			></Route>
 		</Routes>
 	);
 };

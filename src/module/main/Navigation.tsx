@@ -23,7 +23,7 @@ const Navigation = () => {
 					<div className="flex items-center gap-4">
 						<span>{n.icon}</span>
 					</div>
-					<span className="absolute hidden text-white rounded-md group-hover:block opacity-0 duration-1000 group-hover:opacity-100 -right-3 top-1/2  translate-x-[100%] -translate-y-1/2 p-2 whitespace-nowrap bg-gray-700">
+					<span className="absolute hidden z-[1000] text-white rounded-md group-hover:block opacity-0 duration-1000 group-hover:opacity-100 -right-3 top-1/2  translate-x-[100%] -translate-y-1/2 p-2 whitespace-nowrap bg-gray-700">
 						{language === "en" ? n.label.en : n.label.ja}
 					</span>
 				</NavLink>

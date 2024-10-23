@@ -1,10 +1,13 @@
 import { Select } from "antd";
 import { Button } from "components/button";
 import { Input } from "components/input";
+import { useModal } from "context/modal-context";
 import { IconFilter, IconTag } from "icon/community";
 import MainLayout from "layout/MainLayout";
 
 const CommunityPage = () => {
+	const { openModal } = useModal();
+
 	const tagMocks = [
 		"painting",
 		"sculpture",
@@ -33,6 +36,17 @@ const CommunityPage = () => {
 
 	const handleChange = (value: string) => {
 		console.log(`selected ${value}`);
+	};
+
+	const handleOpenModal = () => {
+		openModal(
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+				Consequatur, error nihil cum dignissimos suscipit ab accusantium
+				architecto voluptate voluptatum numquam ullam nisi. Animi
+				corrupti ipsam illo reprehenderit est similique ullam.
+			</p>
+		);
 	};
 
 	return (
@@ -100,12 +114,15 @@ const CommunityPage = () => {
 
 				{/* content container  */}
 				<div>
-					<div className="grid grid-cols-4 gap-x-5 gap-y-7">
+					<div className="grid grid-cols-4 2xl:grid-cols-5 gap-x-5 gap-y-7">
 						{Array(10)
 							.fill(null)
 							.map((_, index) => (
 								<div key={index} className="group">
-									<div className="w-full overflow-hidden cursor-pointer aspect-square rounded-round10">
+									<div
+										onClick={handleOpenModal}
+										className="w-full overflow-hidden cursor-pointer aspect-square rounded-round10"
+									>
 										<img
 											src="https://random-image-pepebigotes.vercel.app/api/random-image"
 											alt="post-cover-image"
