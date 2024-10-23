@@ -21,7 +21,7 @@ const DashboardPage = () => {
 		<MainLayout>
 			<div className="grid w-full grid-cols-[1fr_400px]">
 				{/* main container  */}
-				<div className="px-5 py-3">
+				<div className="content-layout">
 					{/* video container  */}
 					<div className="overflow-hidden bg-black rounded-round10">
 						<div className="w-full max-w-[1200px] mx-auto aspect-video">

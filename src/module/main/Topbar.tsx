@@ -9,6 +9,7 @@ import { RootState } from "store/configureStore";
 import { Drawer } from "antd";
 import { useState } from "react";
 import { Button } from "components/button";
+import { Input } from "components/input";
 
 const Topbar = () => {
 	const { displayName, email, photoURL } = useSelector(
@@ -59,11 +60,7 @@ const Topbar = () => {
 			<div className="flex items-center gap-20">
 				{/* search bar  */}
 				<div className="flex items-center gap-2">
-					<input
-						type="text"
-						placeholder={searchPlaceholder}
-						className="w-[400px] h-[40px] rounded-round10 outline-none px-4 bg-gray-100"
-					/>
+					<Input placeholder={searchPlaceholder} className="w-[400px]" />
 					<Button>{searchButton}</Button>
 				</div>
 
