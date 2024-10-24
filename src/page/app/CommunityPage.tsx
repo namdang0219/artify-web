@@ -1,6 +1,7 @@
 import { Select } from "antd";
 import { Button } from "components/button";
 import { Input } from "components/input";
+import { ModalPost } from "components/modal";
 import { useModal } from "context/modal-context";
 import { IconFilter, IconTag } from "icon/community";
 import MainLayout from "layout/MainLayout";
@@ -39,14 +40,7 @@ const CommunityPage = () => {
 	};
 
 	const handleOpenModal = () => {
-		openModal(
-			<p>
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-				Consequatur, error nihil cum dignissimos suscipit ab accusantium
-				architecto voluptate voluptatum numquam ullam nisi. Animi
-				corrupti ipsam illo reprehenderit est similique ullam.
-			</p>
-		);
+		openModal(<ModalPost />);
 	};
 
 	return (

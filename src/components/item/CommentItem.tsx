@@ -1,9 +1,9 @@
 import { replyMocks } from "mock/replyMocks";
 import ReplyItem from "./ReplyItem";
 import { useState } from "react";
-import { Button } from "components/button";
 import { useSelector } from "react-redux";
 import { RootState } from "store/configureStore";
+import { IconSend } from "page/app/(learning)/OnlineLearningPage";
 
 const CommentItem = ({ item }: { item: any }) => {
 	const { photoURL } = useSelector((state: RootState) => state.user);
@@ -68,12 +68,13 @@ const CommentItem = ({ item }: { item: any }) => {
 									/>
 								</div>
 								<div className="flex flex-1 gap-2">
-									<textarea
+									<input
 										placeholder="Write a comment..."
-										rows={1}
-										className="flex-1 block py-2 border-b border-b-darkGray shrink-0"
+										className="flex-1 block py-2 -mt-2.5 border-b outline-none border-b-darkGray shrink-0"
 									/>
-									<Button>Comment</Button>
+									<button className="p-2 text-white rounded-full shrink-0 size-9 bg-primary hover:bg-primary-hover flex-center">
+										<IconSend />
+									</button>
 								</div>
 							</div>
 						</>
