@@ -19,7 +19,7 @@ const VideoLearningPage = () => {
 	
 	return (
 		<MainLayout>
-			<div className="content-layout learing-layout">
+			<div className="content-layout learning-layout">
 				{/* main container  */}
 				<div>
 					{/* video container  */}

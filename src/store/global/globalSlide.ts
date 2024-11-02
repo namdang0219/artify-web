@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IGlobal {
+export interface IGlobal {
 	theme: "light" | "dark" | "system";
 	language: "en" | "ja";
 }
