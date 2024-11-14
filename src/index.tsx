@@ -9,20 +9,25 @@ import { BrowserRouter } from "react-router-dom";
 import { ModalProvider } from "context/modal-context";
 import "react-responsive-modal/styles.css";
 import { ModalBase } from "components/modal";
+import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
 );
+const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<Provider store={store}>
-				<ModalProvider>
-					<ModalBase />
-					<App />
-				</ModalProvider>
-			</Provider>
-		</BrowserRouter>
+		<AgoraRTCProvider client={client}>
+			<BrowserRouter>
+				<Provider store={store}>
+					<ModalProvider>
+						<ModalBase />
+						<App />
+					</ModalProvider>
+				</Provider>
+			</BrowserRouter>
+		</AgoraRTCProvider>
 	</React.StrictMode>
 );
 

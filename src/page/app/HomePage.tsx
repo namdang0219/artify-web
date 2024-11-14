@@ -1,12 +1,12 @@
-import MainLayout from 'layout/MainLayout';
-import React from 'react';
+import MainLayout from "layout/MainLayout";
+import Basics from "module/Basics";
 
 const HomePage = () => {
-    return (
-        <MainLayout>
-            HomePage
-        </MainLayout>
-    );
+	return (
+		<MainLayout>
+			<Basics></Basics>
+		</MainLayout>
+	);
 };
 
 export default HomePage;
