@@ -1,10 +1,34 @@
+import { Button, Form, Input, Modal, Select, Space } from "antd";
+import { Button as MyButton } from "components/button";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "firebaseConfig";
 import MainLayout from "layout/MainLayout";
-import ReactPlayer from "react-player";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { RootState } from "store/configureStore";
+
+type IComment = {
+	userId: string;
+	username: string;
+	photoURL: string;
+	content: string;
+};
+
+type ILive = {
+	liveId: string;
+	courseId: string;
+	author: string;
+	title: string;
+	description: string;
+	startTime: number;
+	comment: IComment[];
+};
 
 const OnlineLearningPage = () => {
 	const { photoURL } = useSelector((state: RootState) => state.user);
+	const [creatingLive, setCreatingLive] = useState(false);
+	const [isLiving, setIsLiving] = useState(false);
 
 	const courseMock = {
 		title: "Learn JavaScript Basics",
@@ -14,22 +38,70 @@ const OnlineLearningPage = () => {
 		duration: "1h 30m",
 	};
 
-	return (
+	// handle modal
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const showModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleOk = () => {
+		// setIsModalOpen(false);
+	};
+
+	const handleCancel = () => {
+		setIsModalOpen(false);
+		// onFinish();
+	};
+
+	// handle form
+	const [form] = Form.useForm();
+
+	const onCourseChange = (value: string) => {
+		switch (value) {
+			case "折り紙基礎":
+				break;
+			case "キャンドル作り基礎":
+				break;
+			default:
+		}
+	};
+
+	async function onFinish(values: any) {
+		try {
+			setCreatingLive(true);
+			const timeStamp = Date.now();
+			const newLive: ILive = {
+				liveId: String(timeStamp),
+				courseId: "12345",
+				author: "user123",
+				title: values.title,
+				description: values.description,
+				startTime: timeStamp,
+				comment: [],
+			};
+			await setDoc(doc(db, "lives", String(timeStamp)), newLive);
+			toast.success("新しいライブが開始されました");
+			setCreatingLive(false);
+			setIsModalOpen(false);
+			setIsLiving(true);
+		} catch (error) {
+			toast.error("新しいライブの開始が失敗しました");
+			setCreatingLive(false);
+		}
+	}
+
+	const onReset = () => {
+		form.resetFields();
+	};
+
+	return isLiving ? (
 		<MainLayout>
 			<div className="content-layout learning-layout">
 				{/* main container  */}
 				<div>
 					{/* video container  */}
-					<div className="w-full overflow-hidden aspect-video rounded-round10">
-						<ReactPlayer
-							url="https://www.youtube.com/watch?v=3AtDnEC4zak&list=RD3AtDnEC4zak&start_radio=1"
-							controls
-							width={"100%"}
-							height={"100%"}
-							playsinline
-							pip
-						/>
-					</div>
+					<div className="w-full overflow-hidden aspect-video rounded-round10"></div>
 					<div className="px-5 py-3">
 						<div>
 							<h2 className="text-[26px] font-semibold line-clamp-1">
@@ -69,6 +141,80 @@ const OnlineLearningPage = () => {
 						</div>
 					</div>
 				</div>
+			</div>
+		</MainLayout>
+	) : (
+		<MainLayout>
+			{/* modal  */}
+			<Modal
+				title="新規オンラインクラス"
+				open={isModalOpen}
+				onOk={handleOk}
+				onCancel={handleCancel}
+				footer={[]}
+			>
+				<div className="pt-6">
+					<Form
+						// {...layout}
+						form={form}
+						name="control-hooks"
+						onFinish={onFinish}
+						style={{ maxWidth: 600 }}
+					>
+						<Form.Item
+							name="title"
+							label="タイトル"
+							rules={[{ required: true }]}
+						>
+							<Input />
+						</Form.Item>
+						<Form.Item
+							name="description"
+							label="説明"
+							rules={[{ required: true }]}
+						>
+							<Input />
+						</Form.Item>
+						<Form.Item
+							name="Course"
+							label="コース"
+							rules={[{ required: true }]}
+						>
+							<Select
+								placeholder="開催するコースを選択してください"
+								onChange={onCourseChange}
+								allowClear
+							>
+								<Select.Option value="折り紙基礎">
+									折り紙基礎
+								</Select.Option>
+								<Select.Option value="キャンドル作り基礎">
+									キャンドル作り基礎
+								</Select.Option>
+								{/* <Option value="other">other</Option> */}
+							</Select>
+						</Form.Item>
+
+						<Form.Item>
+							<Space>
+								<Button
+									type="primary"
+									htmlType="submit"
+									loading={creatingLive}
+								>
+									作成
+								</Button>
+								<Button htmlType="button" onClick={onReset}>
+									リセット
+								</Button>
+							</Space>
+						</Form.Item>
+					</Form>
+				</div>
+			</Modal>
+
+			<div className="content-layout learning-layout">
+				<MyButton onClick={showModal}>オンラインクラス</MyButton>
 			</div>
 		</MainLayout>
 	);

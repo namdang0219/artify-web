@@ -54,6 +54,10 @@ const App = () => {
 				path="/learning/online"
 				element={<OnlineLearningPage />}
 			></Route>
+			<Route
+				path="/learning/online/:liveid"
+				element={<OnlineLearningPage />}
+			></Route>
 		</Routes>
 	);
 };

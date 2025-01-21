@@ -5,6 +5,7 @@ import { FC, PropsWithChildren } from "react";
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<div className="relative flex w-screen overflow-hidden">
+			
 			{/* absolute sidebar w-[90px]  */}
 			<Sidebar />
 
@@ -14,7 +15,9 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 			{/* main container  */}
 			<div className="flex-1 bg-white">
 				<Topbar />
-				<div className="flex flex-1 h-[calc(100vh-65px)] overflow-y-auto">{children}</div>
+				<div className="flex flex-1 h-[calc(100vh-65px)] overflow-y-auto">
+					{children}
+				</div>
 			</div>
 		</div>
 	);

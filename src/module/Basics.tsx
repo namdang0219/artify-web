@@ -13,9 +13,12 @@ import { useState } from "react";
 import "./styles.css";
 
 export const Basics = () => {
+	const id = "2408516b7187437e9c7a65f756d341f2"
+	// 007eJxTYJjkmOa5REz3Z8Q/39L+x0sVI3t8Hlx231vEbjbfoGBdxQ0FBiMTAwtTQ7Mkc0MLcxNj81TLZPNEM9M0c1OzFGMTwzQjy0996Q2BjAzui84xMTKwMjAyMDGA+AwMAGKHHS4=
+
 	const [calling, setCalling] = useState(false);
 	const isConnected = useIsConnected(); // Store the user's connection status
-	const [appId, setAppId] = useState("");
+	const [appId, setAppId] = useState(id);
 	const [channel, setChannel] = useState("");
 	const [token, setToken] = useState("");
 
@@ -70,8 +73,9 @@ export const Basics = () => {
 						<div>🌟</div>
 						<input
 							onChange={(e) => setAppId(e.target.value)}
-							placeholder="<Your app ID>"
-							value={appId}
+							// placeholder="<Your app ID>"
+							placeholder="2408516b7187437e9c7a65f756d341f2"
+							// value={appId}
 						/>
 						<input
 							onChange={(e) => setChannel(e.target.value)}

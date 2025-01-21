@@ -4,7 +4,7 @@ import Basics from "module/Basics";
 const HomePage = () => {
 	return (
 		<MainLayout>
-			<Basics></Basics>
+			{/* <Basics></Basics> */}
 		</MainLayout>
 	);
 };

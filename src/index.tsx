@@ -10,24 +10,38 @@ import { ModalProvider } from "context/modal-context";
 import "react-responsive-modal/styles.css";
 import { ModalBase } from "components/modal";
 import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
+import { Slide, ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
 );
-const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+// const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
 root.render(
 	<React.StrictMode>
-		<AgoraRTCProvider client={client}>
-			<BrowserRouter>
-				<Provider store={store}>
-					<ModalProvider>
-						<ModalBase />
-						<App />
-					</ModalProvider>
-				</Provider>
-			</BrowserRouter>
-		</AgoraRTCProvider>
+		<ToastContainer
+			position="top-center"
+			autoClose={3000}
+			hideProgressBar={true}
+			newestOnTop={true}
+			closeOnClick={true}
+			rtl={false}
+			pauseOnFocusLoss
+			draggable
+			pauseOnHover
+			theme="light"
+			transition={Slide}
+		/>
+		{/* <AgoraRTCProvider client={client}> */}
+		<BrowserRouter>
+			<Provider store={store}>
+				<ModalProvider>
+					<ModalBase />
+					<App />
+				</ModalProvider>
+			</Provider>
+		</BrowserRouter>
+		{/* </AgoraRTCProvider> */}
 	</React.StrictMode>
 );
 

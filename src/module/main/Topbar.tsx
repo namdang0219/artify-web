@@ -4,7 +4,7 @@ import { topbarContent } from "data/topbar";
 import useLanguage from "hook/useLanguage";
 import { IconBell, IconMessage } from "icon/topbar";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "store/configureStore";
 import { Drawer } from "antd";
 import { useState } from "react";
@@ -15,6 +15,7 @@ const Topbar = () => {
 	const { displayName, email, photoURL } = useSelector(
 		(state: RootState) => state.user
 	);
+	const navigate = useNavigate();
 	const { label1: searchPlaceholder, label2: searchButton } = useLanguage([
 		topbarContent.search.placeholder,
 		topbarContent.search.buttonLabel,
@@ -60,7 +61,10 @@ const Topbar = () => {
 			<div className="flex items-center gap-20">
 				{/* search bar  */}
 				<div className="flex items-center gap-2">
-					<Input placeholder={searchPlaceholder} className="w-[400px]" />
+					<Input
+						placeholder={searchPlaceholder}
+						className="w-[400px]"
+					/>
 					<Button>{searchButton}</Button>
 				</div>
 
@@ -78,16 +82,21 @@ const Topbar = () => {
 					>
 						<IconMessage></IconMessage>
 					</div>
+
+					{/* profile field  */}
 					<div className="flex items-center gap-2.5">
 						<div className="text-right">
 							<p className="font-semibold">{displayName}</p>
 							<p className="text-sm text-gray-500">{email}</p>
 						</div>
-						<div className="size-[50px] rounded-full overflow-hidden">
+						<div
+							className="size-[50px] rounded-full overflow-hidden"
+							onClick={() => navigate("/profile")}
+						>
 							<img
 								src={photoURL}
 								alt="avatar"
-								className="object-cover object-center w-full h-full"
+								className="object-cover object-center w-full h-full cursor-pointer"
 							/>
 						</div>
 					</div>
