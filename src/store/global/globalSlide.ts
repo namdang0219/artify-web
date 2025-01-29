@@ -7,7 +7,7 @@ export interface IGlobal {
 
 const initialState: IGlobal = {
 	theme: "light",
-	language: "en",
+	language: "ja",
 };
 
 const globalSlice = createSlice({

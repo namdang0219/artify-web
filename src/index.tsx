@@ -11,6 +11,7 @@ import "react-responsive-modal/styles.css";
 import { ModalBase } from "components/modal";
 import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
 import { Slide, ToastContainer } from "react-toastify";
+import { AuthProvider } from "context/AuthContext";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
@@ -34,12 +35,14 @@ root.render(
 		/>
 		{/* <AgoraRTCProvider client={client}> */}
 		<BrowserRouter>
-			<Provider store={store}>
-				<ModalProvider>
-					<ModalBase />
-					<App />
-				</ModalProvider>
-			</Provider>
+			<AuthProvider>
+				<Provider store={store}>
+					<ModalProvider>
+						<ModalBase />
+						<App />
+					</ModalProvider>
+				</Provider>
+			</AuthProvider>
 		</BrowserRouter>
 		{/* </AgoraRTCProvider> */}
 	</React.StrictMode>

@@ -1,4 +1,6 @@
 import { Button } from "components/button";
+import { signOut } from "firebase/auth";
+import { auth } from "firebaseConfig";
 import MainLayout from "layout/MainLayout";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -42,9 +44,11 @@ const ProfilePage = () => {
 
 						{/* right container  */}
 						<div className="flex items-center gap-6">
-							<Button >編集</Button>
-                            
+							<Button>編集</Button>
 						</div>
+						<Button onClick={() => signOut(auth)}>
+							ログアウト
+						</Button>
 					</div>
 				</div>
 			</div>

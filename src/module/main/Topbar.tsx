@@ -10,6 +10,7 @@ import { Drawer } from "antd";
 import { useState } from "react";
 import { Button } from "components/button";
 import { Input } from "components/input";
+import { auth } from "firebaseConfig";
 
 const Topbar = () => {
 	const { displayName, email, photoURL } = useSelector(
@@ -86,8 +87,8 @@ const Topbar = () => {
 					{/* profile field  */}
 					<div className="flex items-center gap-2.5">
 						<div className="text-right">
-							<p className="font-semibold">{displayName}</p>
-							<p className="text-sm text-gray-500">{email}</p>
+							<p className="font-semibold">{auth.currentUser?.displayName}</p>
+							<p className="text-sm text-gray-500">{auth.currentUser?.email}</p>
 						</div>
 						<div
 							className="size-[50px] rounded-full overflow-hidden"

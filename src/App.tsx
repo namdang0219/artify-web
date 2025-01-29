@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import DashboardPage from "./page/app/DashboardPage";
 import CommunityPage from "./page/app/CommunityPage";
 import CalendarPage from "./page/app/CalendarPage";
@@ -15,10 +15,14 @@ import { useDarkMode } from "usehooks-ts";
 import { useSelector } from "react-redux";
 import { RootState } from "store/configureStore";
 import { useEffect } from "react";
+import SignupPage from "page/auth/SignupPage";
+import { useAuth } from "context/AuthContext";
 
 const App = () => {
 	const { isDarkMode } = useDarkMode();
 	const { theme } = useSelector((state: RootState) => state.global);
+	const navigate = useNavigate();
+	const { user, loading } = useAuth();
 
 	useEffect(() => {
 		if (theme === "dark") {
@@ -32,32 +36,47 @@ const App = () => {
 		}
 	}, [isDarkMode, theme]);
 
+	useEffect(() => {
+		if (!user) navigate("/signup");
+	}, [user]);
+
+	if (loading)
+		return (
+			<div className="w-screen h-screen flex-center">
+				<p>Welcome to Artify...</p>
+			</div>
+		);
 	return (
 		<Routes>
-			<Route path="/dashboard" element={<DashboardPage />}></Route>
-			<Route path="/community" element={<CommunityPage />}></Route>
-			<Route path="/calendar" element={<CalendarPage />}></Route>
-			<Route path="/help" element={<HelpPage />}></Route>
-			<Route path="/setting" element={<SettingPage />}></Route>
-			<Route path="/" element={<HomePage />}></Route>
-			<Route path="/course" element={<CoursePage />}></Route>
-			<Route path="/contest" element={<ContestPage />}></Route>
-			<Route path="/workshop" element={<WorkshopPage />}></Route>
-			<Route path="/profile" element={<ProfilePage />}></Route>
+			<>
+				<Route path="/signup" element={<SignupPage />}></Route>
+			</>
 
-			{/* learning  */}
-			<Route
-				path="/learning/video"
-				element={<VideoLearningPage />}
-			></Route>
-			<Route
-				path="/learning/online"
-				element={<OnlineLearningPage />}
-			></Route>
-			<Route
-				path="/learning/online/:liveid"
-				element={<OnlineLearningPage />}
-			></Route>
+			<>
+				<Route path="/dashboard" element={<DashboardPage />}></Route>
+				<Route path="/community" element={<CommunityPage />}></Route>
+				<Route path="/calendar" element={<CalendarPage />}></Route>
+				<Route path="/help" element={<HelpPage />}></Route>
+				<Route path="/setting" element={<SettingPage />}></Route>
+				<Route path="/" element={<HomePage />}></Route>
+				<Route path="/course" element={<CoursePage />}></Route>
+				<Route path="/contest" element={<ContestPage />}></Route>
+				<Route path="/workshop" element={<WorkshopPage />}></Route>
+				<Route path="/profile" element={<ProfilePage />}></Route>
+				{/* learning  */}
+				<Route
+					path="/learning/video"
+					element={<VideoLearningPage />}
+				></Route>
+				<Route
+					path="/learning/online"
+					element={<OnlineLearningPage />}
+				></Route>
+				<Route
+					path="/learning/online/:liveid"
+					element={<OnlineLearningPage />}
+				></Route>
+			</>
 		</Routes>
 	);
 };
